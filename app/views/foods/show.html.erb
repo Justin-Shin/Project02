@@ -1,0 +1,17 @@
+<h2><%= @food.name %></h2>
+<p>Information (per serving: <%= @food.serving_size %> <%= @food.unit_of_measure %>)</p>
+<ul>
+  <li>Calories: <%= @food.calories %></li>
+  <li>Fat: <%= @food.fat %> grams</li>
+  <li>Carbohydrates: <%= @food.carbohydrates %> grams</li>
+  <li>Protein: <%= @food.protein %> grams</li>
+  <li>Vegetarian: <%= @food.vegetarian ? "Yes" : "No" %></li>
+  <li>Gluten Free: <%= @food.gluten_free ? "Yes" : "No"%></li>
+</ul>
+
+Recipes that include this food:
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li><%= link_to recipe.name, recipe_path(recipe)%></li>
+  <% end %>
+</ul>

@@ -1,6 +1,14 @@
-<ul>
+<h2>Foods</h2>
+<div class="boxes">
   <% @foods.each do |food| %>
-    <li><%= link_to food.name, food_path(food) %>
-    </li>
+  <% puts "========================#{food.img_url}"%>
+    <div class="box" style= "background-image: url(<%= food.img_url %>)">
+      <%= link_to food.name, food_path(food) %>
+      <% if food.users.include? current_user %>
+        (<%= link_to "-", remove_supply_food_path(food), method: :delete%>)
+      <% else %>
+        (<%= link_to "+", add_supply_food_path(food), method: :post%>)
+      <% end %>
+    </div>
   <% end %>
-</ul>
+</div>

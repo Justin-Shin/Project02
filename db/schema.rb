@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226044337) do
+ActiveRecord::Schema.define(version: 20170226013945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
     t.string   "name",                            null: false
+    t.string   "img_url"
     t.decimal  "fat",             default: "0.0"
     t.decimal  "protein",         default: "0.0"
     t.decimal  "carbohydrates",   default: "0.0"
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170226044337) do
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
     t.text     "instructions"
+    t.string   "img_url"
     t.decimal  "servings",            default: "1.0"
     t.decimal  "total_calories",      default: "0.0"
     t.decimal  "total_fat",           default: "0.0"
@@ -55,14 +57,14 @@ ActiveRecord::Schema.define(version: 20170226044337) do
   end
 
   create_table "supplies", force: :cascade do |t|
-    t.integer  "amount",          null: false
-    t.string   "unit_of_measure", null: false
-    t.integer  "recipe_id"
+    t.integer  "amount"
+    t.string   "unit_of_measure"
+    t.integer  "user_id"
     t.integer  "food_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["food_id"], name: "index_supplies_on_food_id", using: :btree
-    t.index ["recipe_id"], name: "index_supplies_on_recipe_id", using: :btree
+    t.index ["user_id"], name: "index_supplies_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,5 +89,5 @@ ActiveRecord::Schema.define(version: 20170226044337) do
   add_foreign_key "ingredients", "foods"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "supplies", "foods"
-  add_foreign_key "supplies", "recipes"
+  add_foreign_key "supplies", "users"
 end

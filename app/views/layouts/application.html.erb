@@ -9,8 +9,41 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <header>
+      <div class = "header_left">
+        <img src="http://i.imgur.com/HRIQ3Sp.png" class= "logo" alt="fridge">
+        <span class="splash">FridgerApp</span>
+      </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div class = "login">
+        <% if current_user %>
+          <%= "#{current_user.email} | "%><%=link_to "Log Out", destroy_user_session_path, :method => :delete  %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path %> | <%= link_to "Register", new_user_registration_path %>
+        <% end %>
+      </div>
+
+    </header>
+    <div class = "content_body">
+      <aside class = "left_bar">
+        <div class = "aside_link"><%= link_to "Foods", foods_path %></div>
+        <div class = "aside_link"><%= link_to "Recipes", recipes_path %></div>
+        <% if current_user %>
+        <div class = "aside_link"><%= link_to "What you can make", recipes_possible_path%></div>
+        <div class = "pantry">Your Refrigerator
+          <ul>
+            <% current_user.foods.each do |food| %>
+              <li><%= link_to food.name, food_path(food) %> (<%= link_to "-", remove_supply_food_path(food), method: :delete%>)</li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      </aside>
+      <div class = "yield">
+      <%= yield %>
+      </div>
+    </div>
+
   </body>
 </html>

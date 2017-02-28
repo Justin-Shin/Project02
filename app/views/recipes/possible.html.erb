@@ -1,0 +1,13 @@
+<h2>Recipes</h2>
+<ul>
+<% @recipes.each do |recipe| %>
+  <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+<% end %>
+</ul>
+<br>
+<h2>Your Pantry</h2>
+<ul>
+  <% current_user.foods.each do |food| %>
+    <li><%= link_to food.name, food_path(food) %> (<%= link_to "-", remove_supply_food_path(food), method: :delete%>)</li>
+  <% end %>
+</ul>

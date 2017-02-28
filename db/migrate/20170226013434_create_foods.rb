@@ -2,6 +2,7 @@ class CreateFoods < ActiveRecord::Migration[5.0]
   def change
     create_table :foods do |t|
       t.string :name, null: false
+      t.string :img_url
       t.numeric :fat, default: 0
       t.numeric :protein, default: 0
       t.numeric :carbohydrates, default: 0

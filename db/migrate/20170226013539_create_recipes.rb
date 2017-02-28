@@ -3,6 +3,7 @@ class CreateRecipes < ActiveRecord::Migration[5.0]
     create_table :recipes do |t|
       t.string :name
       t.text :instructions
+      t.string :img_url
       t.numeric :servings, default:1
       t.numeric :total_calories, default:0
       t.numeric :total_fat, default:0

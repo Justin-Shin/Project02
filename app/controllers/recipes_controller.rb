@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
       ingredient.update(amount: params[:food_amount][ingredient.food.name.to_sym].first.last,unit_of_measure:params[:food_unit][ingredient.food.name.to_sym].first.last)
     end
 
-    Recipe.update(recipe_params)
+    @recipe.update(recipe_params)
     if params[:foods]
       params[:foods].each do |food|
         @recipe.foods << Food.find_by_name(food)
@@ -41,13 +41,21 @@ class RecipesController < ApplicationController
     redirect_to recipe_path @recipe
   end
 
+  def possible
+    @recipes = Recipe.all.find_all{
+      |recipe| recipe.foods.all? {
+        |food| current_user.foods.include? food
+      }
+    }
+  end
+
   def destroy
   end
 
 
   private
     def recipe_params
-      params.require(:recipe).permit(:name, :instructions, :servings)
+      params.require(:recipe).permit(:img_url,:name, :instructions, :servings)
     end
 
 end
