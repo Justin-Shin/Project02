@@ -5,3 +5,42 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Food.destroy_all
+Recipe.destroy_all
+Ingredient.destroy_all
+
+butter = Food.create(name:"Butter",fat:12,protein:0.1,carbohydrates:0,calories:102,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"tablespoon")
+flour = Food.create(name:"Flour: Unbleached, all-purpose",fat:1,protein:4,carbohydrates:23,calories:110,vegetarian:true,gluten_free:false,serving_size:1,unit_of_measure:"cup")
+w_sugar = Food.create(name:"Sugar: White",fat:1,protein:1,carbohydrates:200,calories:774,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"cup")
+b_sugar = Food.create(name:"Sugar: Brown",fat:1,protein:1,carbohydrates:216,calories:836,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"cup")
+vanilla = Food.create(name:"Vanilla Extract",fat:1,protein:1,carbohydrates:1.6,calories:38,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"tablespoon")
+egg = Food.create(name:"Egg",fat:5,protein:6,carbohydrates:0.6,calories:78,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"")
+yolk = Food.create(name:"Egg: Yolk",fat:4.5,protein:2.7,carbohydrates:0.6,calories:55,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"")
+white = Food.create(name:"Egg: White",fat:0.5,protein:3.3,carbohydrates:1,calories:23,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"")
+b_powder = Food.create(name:"Baking Powder",fat:0,protein:0,carbohydrates:1.3,calories:2,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"teaspoon")
+b_soda = Food.create(name:"Baking Soda",fat:1,protein:1,carbohydrates:1,calories:1,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"teaspoon")
+salt = Food.create(name:"Salt",fat:1,protein:1,carbohydrates:1,calories:1,vegetarian:true,gluten_free:true,serving_size:1,unit_of_measure:"teaspoon")
+#browned butter, roux, egg fry, toffee
+
+choco_cookies = Recipe.create(name:"Chocolate Chip Cookies",instructions: "Do the stuff for the cookies.",servings:24,total_calories:1,total_fat:1,total_protein:1,total_carbohydrates:1,vegetarian:true,gluten_free:false)
+browned_butter = Recipe.create(name:"Browned Butter",instructions:"Brown it dude",servings:16,total_calories:1,total_fat:1,total_protein:1,total_carbohydrates:1,vegetarian:true,gluten_free:true)
+roux = Recipe.create(name:"Roux",instructions:"Don't burn it man",servings:1,total_calories:1,total_fat:1,total_protein:1,total_carbohydrates:1,vegetarian:true,gluten_free:false)
+egg_fry = Recipe.create(name:"Fried Egg",instructions:"put it on the pan, yo",servings:1,total_calories:1,total_fat:1,total_protein:1,total_carbohydrates:1,vegetarian:true,gluten_free:true)
+toffee = Recipe.create(name:"Toffee",instructions:"HOLY SHIT ITS SO HOT",servings:1,total_calories:1,total_fat:1,total_protein:1,total_carbohydrates:1,vegetarian:true,gluten_free:true)
+
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:choco_cookies,food:butter)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:choco_cookies,food:flour)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:choco_cookies,food:w_sugar)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:choco_cookies,food:b_sugar)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:choco_cookies,food:vanilla)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:choco_cookies,food:egg)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:choco_cookies,food:yolk)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:choco_cookies,food:salt)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:choco_cookies,food:b_soda)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:browned_butter,food:butter)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:roux,food:butter)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:roux,food:flour)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:egg_fry,food:egg)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:toffee,food:w_sugar)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:toffee,food:butter)
+Ingredient.create(amount:1,unit_of_measure:"apple",recipe:toffee,food:salt)

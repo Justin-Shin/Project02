@@ -1,0 +1,27 @@
+<h2>New Recipe</h2>
+<%= form_for @recipe do |f| %>
+<br>
+<%= f.label :name %>
+<br>
+<%= f.text_field :name %>
+<br>
+<br>
+<%= f.label :instructions %>
+<br>
+<%= f.text_field :instructions %>
+<br>
+<br>
+<%= f.label :servings %>
+<br>
+<%= f.text_field :servings %>
+<br>
+<br>
+
+<% @foods.each do |g| %>
+  <%= label_tag g.name  %>
+  <%= check_box_tag "foods[#{g.name}]", g.name  %>
+  <br>
+<% end %>
+
+<%= f.submit "Enter" %>
+<% end %>

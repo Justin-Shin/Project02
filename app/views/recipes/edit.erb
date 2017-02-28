@@ -1,0 +1,36 @@
+<h2><%= @recipe.name %></h2>
+<%= form_for @recipe do |f| %>
+<br>
+<% @recipe.ingredients.each do |ingredient|%>
+<% puts "=========================#{ingredient.amount}=========================" %>
+<% puts "+++++++++++++++++++++++++#{ingredient.unit_of_measure}++++++++++++++++++++" %>
+<p><%=number_field "food_amount[#{ingredient.food.name}]", value: 1 %>
+  <%=text_field "food_unit[#{ingredient.food.name}]", value: 1 %><%= ingredient.food.name %></p>
+<%end%>
+<br>
+<%= f.label :name %>
+<br>
+<%= f.text_field :name %>
+<br>
+<br>
+<%= f.label :instructions %>
+<br>
+<%= f.text_field :instructions %>
+<br>
+<br>
+<%= f.label :servings %>
+<br>
+<%= f.text_field :servings %>
+<br>
+<br>
+
+<% Food.all.each do |g| %>
+  <% if !@recipe.foods.include? g%>
+    <%= label_tag g.name  %>
+    <%= check_box_tag "foods[#{g.name}]", g.name  %>
+    <br>
+  <% end %>
+<% end %>
+
+<%= f.submit "Enter" %>
+<% end %>
