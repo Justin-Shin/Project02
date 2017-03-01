@@ -13,8 +13,13 @@
  *= require_tree .
  *= require_self
  */
+* {
+  font-family: 'Bree Serif', serif;
+
+}
 a {
   text-decoration: none;
+  color: black;
 }
 body {
    margin:0 auto;
@@ -25,6 +30,9 @@ body {
 h2{
   text-align: center;
  }
+h2>a {
+  color:royalblue;
+}
 header {
   background-color: navy;
   width: 100%;
@@ -184,7 +192,65 @@ span.favorite {
 .pantry {
   margin: 10px;
   margin-top:20px;
+  height: calc(100vh - (30vh + 60px));
+  overflow:auto;
+}
+.pantry a {
+  color: royalblue;
+}
+.pantry a:hover {
+  color:green;
+}
+.login a {
+  color:royalblue;
+}
+.login a:hover {
+  color:green;
 }
 a.aside_link {
   text-decoration: none;
+}
+.recipe.form {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.recipe.form>div {
+  display:flex;
+  flex-direction: column;
+  /*border: black 1px solid;*/
+  width: 20vw;
+  margin: 2vh;
+}
+.left > * {
+  width: 75%;
+  margin-bottom:10px;
+  display:flex;
+  justify-content: space-between;
+}
+.left{
+  margin-left:5vw;
+  margin-right:0;
+  align-items: flex-end;
+}
+.middle {
+  /*border-right: black 1px solid;
+  border-left: black 1px solid;*/
+  height:50vh;
+  overflow:auto;
+}
+.middle > *{
+  margin-left: calc(20vw - 75%);
+}
+h3 {
+  margin-top:0;
+  margin-bottom:10px;
+}
+.right > * {
+  margin-bottom: 10px;
+}
+.enter_button {
+  margin:auto;
+  width: 20vw;
+  display: block;
 }

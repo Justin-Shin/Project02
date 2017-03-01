@@ -1,7 +1,16 @@
-<h2><%= @recipe.name %></h2>
-<ul>
-  <% @recipe.ingredients.each do |ingredient| %>
-    <li><%= "#{ingredient.amount} #{ingredient.unit_of_measure} #{ingredient.food.name}"%></li>
-  <% end %>
-</ul>
-<p><%= @recipe.instructions %></p>
+<h2><%= @recipe.name %> (<%= link_to "Edit", edit_recipe_path %>)</h2>
+<div class = "show recipe form">
+  <div class="food_item left" style="background-image: url(<%= @recipe.img_url%>)"></div>
+  <div class = "middle">
+    <h3>
+      Ingredients:
+    </h3>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <div><%= "#{ingredient.amount} #{ingredient.unit_of_measure} #{ingredient.food.name}"%></div>
+      <% end %>
+  </div>
+  <div class="right">
+    <h3>Instructions:</h3>
+    <%= @recipe.instructions %>
+  </div>
+</div>
