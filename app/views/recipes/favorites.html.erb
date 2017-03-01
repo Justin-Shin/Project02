@@ -1,0 +1,33 @@
+<h2>Favorite Recipes!</h2>
+<div class="boxes">
+  <% @recipes.each do |recipe| %>
+    <div class="box" style= "background-image: url(<%= recipe.img_url %>)">
+      <p class="boxy">
+        <%= link_to recipe.name, recipe_path(recipe) %>
+        <% if current_user %>
+          <% if recipe.users.include? current_user %>
+            <span class= "favorite"><%= link_to "&hearts;".html_safe, remove_favorite_recipe_path(recipe), method: :delete, class: "red_favorite"%></span>
+          <% else %>
+            <span class= "favorite"><%= link_to "&hearts;".html_safe, add_favorite_recipe_path(recipe), method: :post%></span>
+          <% end %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+</div>
+<div class = "boxes">
+  <% @recipes_no.each do |recipe| %>
+    <div class="box" style= "background-image: url(<%= recipe.img_url %>)">
+      <p class="boxy">
+        <%= link_to recipe.name, recipe_path(recipe), class: "unable" %>
+        <% if current_user %>
+          <% if recipe.users.include? current_user %>
+            <span class= "favorite"><%= link_to "&hearts;".html_safe, remove_favorite_recipe_path(recipe), method: :delete, class: "red_favorite"%></span>
+          <% else %>
+            <span class= "favorite"><%= link_to "&hearts;".html_safe, add_favorite_recipe_path(recipe), method: :post%></span>
+          <% end %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+</div>

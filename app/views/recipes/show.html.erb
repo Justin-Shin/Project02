@@ -19,7 +19,7 @@
       Ingredients:
     </h3>
     <% @recipe.ingredients.each do |ingredient| %>
-      <div><%= "#{ingredient.amount} #{ingredient.unit_of_measure} #{ingredient.food.name}"%></div>
+      <div><%= "#{ingredient.amount} #{ingredient.unit_of_measure}" %> <%= link_to ingredient.food.name, food_path(ingredient.food), class: "ingredient"%></div>
       <% end %>
   </div>
   <div class="right">

@@ -3,8 +3,12 @@
   <% @recipes.each do |recipe| %>
     <div class="box" style= "background-image: url(<%= recipe.img_url %>)">
       <p class="boxy">
-        <%= link_to recipe.name, recipe_path(recipe) %> <span class= "favorite">&hearts;</span>
-      </p>
+        <%= link_to recipe.name, recipe_path(recipe) %>
+          <% if recipe.users.include? current_user %>
+            <span class= "favorite"><%= link_to "&hearts;".html_safe, remove_favorite_recipe_path(recipe), method: :delete, class: "red_favorite"%></span>
+          <% else %>
+            <span class= "favorite"><%= link_to "&hearts;".html_safe, add_favorite_recipe_path(recipe), method: :post%></span>
+          <% end %>
     </div>
   <% end %>
 </div>

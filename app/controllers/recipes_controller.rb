@@ -54,10 +54,8 @@ class RecipesController < ApplicationController
         |food| current_user.foods.include? food
       }
     }
-    @recipesNO = Recipe.all.find_all{
-      |recipe| recipe.foods.all? {
-        |food| current_user.foods.include? food
-      }
+    @recipes_no = current_user.recipes.find_all {
+      |recipe| @recipes.exclude? recipe
     }
   end
 
