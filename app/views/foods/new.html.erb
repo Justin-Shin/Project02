@@ -1,55 +1,48 @@
-<h2><%= @food.name %></h2>
+<h2>New Food</h2>
 <%= form_for @food do |f| %>
-<br>
-<%= f.label :name %>
-<br>
-<%= f.text_field :name %>
-<br>
-<br>
-<%= f.label :calories %>
-<br>
-<%= f.text_field :calories %>
-<br>
-<br>
-<%= f.label :fat %>
-<br>
-<%= f.text_field :fat %>
-<br>
-<br>
-<%= f.label :carbohydrates %>
-<br>
-<%= f.text_field :carbohydrates %>
-<br>
-<br>
-<%= f.label :protein %>
-<br>
-<%= f.text_field :protein %>
-<br>
-<br>
-<%= f.label :vegetarian %>
-<br>
-<%= f.text_field :vegetarian %>
-<br>
-<br>
-<%= f.label :gluten_free %>
-<br>
-<%= f.text_field :gluten_free %>
-<br>
-<br>
-<%= f.label :img_url %>
-<br>
-<%= f.text_field :img_url %>
-<br>
-<br>
-<%= f.label :serving_size %>
-<br>
-<%= f.text_field :serving_size %>
-<br>
-<br>
-<%= f.label :unit_of_measure %>
-<br>
-<%= f.text_field :unit_of_measure %>
-<br>
-<br>
-<%= f.submit "Enter" %>
+<div class="food form">
+  <div class = "right">
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :serving_size %>
+      <%= f.number_field :serving_size %>
+    </div>
+    <div>
+      <%= f.label :unit_of_measure %>
+      <%= f.text_field :unit_of_measure %>
+    </div>
+    <div>
+      <%= f.label :img_url %>
+      <%= f.text_field :img_url %>
+    </div>
+    <div>
+      <%= f.label :calories %>
+      <%= f.number_field :calories %>
+    </div>
+    <div>
+      <%= f.label :fat %>
+      <%= f.number_field :fat %>
+    </div>
+    <div>
+      <%= f.label :carbohydrates %>
+      <%= f.number_field :carbohydrates %>
+    </div>
+    <div>
+      <%= f.label :protein %>
+      <%= f.number_field :protein %>
+    </div>
+    <div>
+      <%= f.label :vegetarian %>
+      <%= f.text_field :vegetarian %>
+    </div>
+    <div>
+      <%= f.label :gluten_free %>
+      <%= f.text_field :gluten_free %>
+    </div>
+  </div>
+</div>
+<%= f.submit "Enter", class: "enter_button"%>
 <% end %>

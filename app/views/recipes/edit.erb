@@ -1,41 +1,51 @@
-<h2><%= @recipe.name %></h2>
+<h2>Edit Recipe (<%= link_to "Delete", @recipe, method: :delete, class: "delete" %>)</h2>
 <%= form_for @recipe do |f| %>
-<br>
-<% @recipe.ingredients.each do |ingredient|%>
-<% puts "=========================#{ingredient.amount}=========================" %>
-<% puts "+++++++++++++++++++++++++#{ingredient.unit_of_measure}++++++++++++++++++++" %>
-<p><%=number_field "food_amount[#{ingredient.food.name}]", value: 1 %>
-  <%=text_field "food_unit[#{ingredient.food.name}]", value: 1 %><%= ingredient.food.name %></p>
-<%end%>
-<br>
-<%= f.label :name %>
-<br>
-<%= f.text_field :name %>
-<br>
-<br>
-<%= f.label :img_url %>
-<br>
-<%= f.text_field :img_url %>
-<br>
-<br>
-<%= f.label :instructions %>
-<br>
-<%= f.text_field :instructions %>
-<br>
-<br>
-<%= f.label :servings %>
-<br>
-<%= f.text_field :servings %>
-<br>
-<br>
+<div class="new recipe form">
+  <div class="left">
+    <h3>
+      Information:
+    </h3>
+    <div class = "input_area">
+      <%= f.label "Name: " %>
+      <%= f.text_field :name %>
+    </div>
+    <div class = "input_area">
+      <%= f.label "Image URL: " %>
+      <%= f.text_field :img_url %>
+    </div>
+    <div class = "input_area">
+      <%= f.label "Servings: " %>
+      <%= f.number_field :servings %>
+    </div>
+  </div>
+  <div class="middle">
+    <h3>
+      Ingredients:
+    </h3>
 
-<% Food.all.each do |g| %>
-  <% if !@recipe.foods.include? g%>
-    <%= label_tag g.name  %>
-    <%= check_box_tag "foods[#{g.name}]", g.name  %>
+    <% @recipe.ingredients.each do |ingredient|%>
+      <div>
+        <%=f.number_field "amount[#{ingredient.food.name}]", value: ingredient.amount, class: "input_box num" %>
+        <%=f.text_field "unit[#{ingredient.food.name}]", value: ingredient.unit_of_measure, class: "input_box text" %> <%= ingredient.food.name %>
+      </div>
+    <%end%>
     <br>
-  <% end %>
-<% end %>
-
-<%= f.submit "Enter" %>
+    <h3>
+      Add New Ingredients:
+    </h3>
+    <% Food.all.each do |g| %>
+      <% if !@recipe.foods.include? g %>
+        <div>
+          <%= check_box_tag "foods[#{g.name}]", g.name  %>
+          <%= label_tag g.name  %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="right">
+    <h3><%= f.label "Instructions: "%></h3>
+    <%= f.text_area :instructions,  size: "30x10"%>
+  </div>
+</div>
+<%= f.submit "Enter" , class: "enter_button"%>
 <% end %>

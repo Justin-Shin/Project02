@@ -222,6 +222,18 @@ a.aside_link {
   width: 20vw;
   margin: 2vh;
 }
+.food.form {
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.food.form>div {
+  display:flex;
+  flex-direction: column;
+  /*border: black 1px solid;*/
+  width: 30vw;
+  margin: 2vh;
+}
 .left > * {
   width: 75%;
   margin-bottom:10px;
@@ -248,6 +260,15 @@ h3 {
 }
 .right > * {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+
+}
+.middle .input_box.num{
+  width: 2em;
+}
+.middle .input_box.text{
+  width: 4em;
 }
 .enter_button {
   margin:auto;

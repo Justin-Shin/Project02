@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.ingredients.each do |ingredient|
-      ingredient.update(amount: params[:food_amount][ingredient.food.name.to_sym].first.last,unit_of_measure:params[:food_unit][ingredient.food.name.to_sym].first.last)
+      ingredient.update(amount: params[:recipe][:amount][ingredient.food.name.to_sym],unit_of_measure:params[:recipe][:unit][ingredient.food.name.to_sym])
     end
 
     @recipe.update(recipe_params)
@@ -50,6 +50,9 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to root_path
   end
 
 

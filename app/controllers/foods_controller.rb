@@ -27,6 +27,12 @@ class FoodsController < ApplicationController
     redirect_to food_path @food
   end
 
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to root_path
+  end
+
   def add_supply
   @food = Food.find(params[:id])
   @food.supplies.create(user: current_user)
