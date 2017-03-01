@@ -1,14 +1,22 @@
 <h2>Foods</h2>
 <div class="boxes">
   <% @foods.each do |food| %>
-  <% puts "========================#{food.img_url}"%>
     <div class="box" style= "background-image: url(<%= food.img_url %>)">
-      <%= link_to food.name, food_path(food) %>
-      <% if food.users.include? current_user %>
-        (<%= link_to "-", remove_supply_food_path(food), method: :delete%>)
-      <% else %>
-        (<%= link_to "+", add_supply_food_path(food), method: :post%>)
-      <% end %>
+      <p class="boxy hover">
+        <%= link_to food.name, food_path(food) %>
+        <br>
+        <small>
+          <% if food.users.include? current_user %>
+            (<%= link_to "Remove from pantry", remove_supply_food_path(food), method: :delete%>)
+          <% else %>
+            (<%= link_to "Add to pantry", add_supply_food_path(food), method: :post%>)
+          <% end %>
+        </small>
+      </p>
+      <small>
+
+      </small>
     </div>
   <% end %>
+  <a href="<%= new_food_path %>"><div style = "background-image: url(http://i.imgur.com/GkEIPFO.jpg)" class="box new_item"><span>+</span></div></a>
 </div>

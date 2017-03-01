@@ -1,13 +1,32 @@
 <h2>Recipes</h2>
-<ul>
-<% @recipes.each do |recipe| %>
-  <li><%= link_to recipe.name, recipe_path(recipe) %></li>
-<% end %>
-</ul>
+<div class="boxes">
+  <% @recipes.each do |recipe| %>
+    <div class="box" style= "background-image: url(<%= recipe.img_url %>)">
+      <p class="boxy">
+        <%= link_to recipe.name, recipe_path(recipe) %> <span class= "favorite">&hearts;</span>
+      </p>
+    </div>
+  <% end %>
+</div>
 <br>
 <h2>Your Pantry</h2>
-<ul>
+<div class="boxes">
   <% current_user.foods.each do |food| %>
-    <li><%= link_to food.name, food_path(food) %> (<%= link_to "-", remove_supply_food_path(food), method: :delete%>)</li>
+    <div class="box" style= "background-image: url(<%= food.img_url %>)">
+      <p class="boxy hover">
+        <%= link_to food.name, food_path(food) %>
+        <br>
+        <small>
+          <% if food.users.include? current_user %>
+            (<%= link_to "Remove from pantry", remove_supply_food_path(food), method: :delete%>)
+          <% else %>
+            (<%= link_to "Add to pantry", add_supply_food_path(food), method: :post%>)
+          <% end %>
+        </small>
+      </p>
+      <small>
+
+      </small>
+    </div>
   <% end %>
-</ul>
+</div>

@@ -1,11 +1,13 @@
 <h2>Recipes</h2>
-<ul>
+<div class="boxes">
   <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe_path(recipe) %> - Requires:
-    <% recipe.foods.each do |food| %>
-      <%= link_to food.name, food_path(food) %>,
-    <% end %>
-    etc.
-    </li>
+    <div class="box" style= "background-image: url(<%= recipe.img_url %>)">
+      <p class="boxy">
+        <%= link_to recipe.name, recipe_path(recipe) %> <span class= "favorite">&hearts;</span>
+      </p>
+      <small>
+
+      </small>
+    </div>
   <% end %>
-</ul>
+</div>

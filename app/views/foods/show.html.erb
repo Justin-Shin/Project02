@@ -1,4 +1,5 @@
 <h2><%= @food.name %></h2>
+<div class="food_item" style="background-image: url(<%= @food.img_url%>)"></div>
 <p>Information (per serving: <%= @food.serving_size %> <%= @food.unit_of_measure %>)</p>
 <ul>
   <li>Calories: <%= @food.calories %></li>
@@ -9,9 +10,13 @@
   <li>Gluten Free: <%= @food.gluten_free ? "Yes" : "No"%></li>
 </ul>
 
-Recipes that include this food:
-<ul>
+<h2>Recipes that include this food:</h2>
+<div class="boxes">
   <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe_path(recipe)%></li>
+    <div class="box" style= "background-image: url(<%= recipe.img_url %>)">
+      <p class="boxy">
+        <%= link_to recipe.name, recipe_path(recipe) %> <span class= "favorite">&hearts;</span>
+      </p>
+    </div>
   <% end %>
-</ul>
+</div>
