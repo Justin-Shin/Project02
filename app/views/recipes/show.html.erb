@@ -4,7 +4,16 @@
   <% end %>
  </h2>
 <div class = "show recipe form">
-  <div class="food_item left" style="background-image: url(<%= @recipe.img_url%>)"></div>
+
+  <% if @recipe.users.include? current_user %>
+    <div class="food_item left recipe" style="background-image: url(<%= @recipe.img_url%>)">
+      <%= link_to "<div><div>&hearts;</div></div>".html_safe, remove_favorite_recipe_path(@recipe), method: :delete, class: "red_favorite hidden food_item"%>
+    </div>
+  <% else %>
+    <div class="food_item left recipe" style="background-image: url(<%= @recipe.img_url%>)">
+      <%= link_to "<div><div>&hearts;</div></div>".html_safe, add_favorite_recipe_path(@recipe), method: :post, class: "hidden food_item"%>
+    </div>
+  <% end %>
   <div class = "middle">
     <h3>
       Ingredients:

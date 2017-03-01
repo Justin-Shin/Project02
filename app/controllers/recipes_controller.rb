@@ -48,11 +48,34 @@ class RecipesController < ApplicationController
       }
     }
   end
+  def favorites
+    @recipes = current_user.recipes.find_all{
+      |recipe| recipe.foods.all? {
+        |food| current_user.foods.include? food
+      }
+    }
+    @recipesNO = Recipe.all.find_all{
+      |recipe| recipe.foods.all? {
+        |food| current_user.foods.include? food
+      }
+    }
+  end
 
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to root_path
+  end
+
+  def add_favorite
+    @recipe = Recipe.find(params[:id])
+    @recipe.favorites.create(user: current_user)
+    redirect_to :back
+  end
+
+  def remove_favorite
+    Favorite.find_by(user: current_user, recipe_id: params[:id]).destroy
+    redirect_to :back
   end
 
 

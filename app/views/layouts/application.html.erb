@@ -55,6 +55,12 @@
         <%= yield %>
       </div>
     </div>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $('.food_item.recipe').hover(
+      function() {$('.food_item.recipe > a').toggle();} ,
+      function() {$('.food_item.recipe > a').toggle();}
+    );
+  </script>
   </body>
 </html>

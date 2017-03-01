@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :supplies, dependent: :destroy
   has_many :foods, through: :supplies
+
+  has_many :favorites, dependent: :destroy
+  has_many :recipes, through: :favorites
 end

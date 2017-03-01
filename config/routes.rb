@@ -9,11 +9,13 @@ Rails.application.routes.draw do
     end
   end
   match 'recipes/possible' => 'recipes#possible', :via => :get
-  resources :recipes #do
-    #  member do
-  #     post 'add_favorite'
-  #     delete 'remove_favorite'
+  match 'recipes/favorites' => 'recipes#favorites', :via => :get
 
-    #  end
-  # end
+  resources :recipes do
+     member do
+      post 'add_favorite'
+      delete 'remove_favorite'
+
+     end
+  end
 end

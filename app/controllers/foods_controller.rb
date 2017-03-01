@@ -34,15 +34,15 @@ class FoodsController < ApplicationController
   end
 
   def add_supply
-  @food = Food.find(params[:id])
-  @food.supplies.create(user: current_user)
-  redirect_to :back
-end
+    @food = Food.find(params[:id])
+    @food.supplies.create(user: current_user)
+    redirect_to :back
+  end
 
-def remove_supply
-  Supply.find_by(user: current_user, food_id: params[:id]).destroy
-  redirect_to :back
-end
+  def remove_supply
+    Supply.find_by(user: current_user, food_id: params[:id]).destroy
+    redirect_to :back
+  end
 
   private
   def food_params
