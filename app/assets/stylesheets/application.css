@@ -170,8 +170,8 @@ a.hidden {
   display: inline;
 }*/
 .box {
-  height: 30vh;
-  width: 30vh;
+  height: 35vh;
+  width: 35vh;
   margin: 3vh;
   /*border: black 1px solid;*/
   background-size: cover;
