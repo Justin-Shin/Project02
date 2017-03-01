@@ -1,4 +1,7 @@
-<h2><%= @food.name %> (<%= link_to "Edit", edit_food_path(@food) %>)</h2>
+<h2><%= @food.name %>
+  <% if current_user %>
+   (<%= link_to "Edit", edit_food_path(@food) %>)</h2>
+  <% end %>
 <div class = "food form">
   <div class="food_item" style="background-image: url(<%= @food.img_url%>)"></div>
   <div class = "right">
@@ -29,7 +32,7 @@
   <% @recipes.each do |recipe| %>
     <div class="box" style= "background-image: url(<%= recipe.img_url %>)">
       <p class="boxy">
-        <%= link_to recipe.name, recipe_path(recipe) %> <span class= "favorite">&hearts;</span>
+        <%= link_to recipe.name, recipe_path(recipe) %><% if current_user %> <span class= "favorite">&hearts;</span><% end %>
       </p>
     </div>
   <% end %>

@@ -3,12 +3,17 @@
   <% @recipes.each do |recipe| %>
     <div class="box" style= "background-image: url(<%= recipe.img_url %>)">
       <p class="boxy">
-        <%= link_to recipe.name, recipe_path(recipe) %> <span class= "favorite">&hearts;</span>
+        <%= link_to recipe.name, recipe_path(recipe) %>
+        <% if current_user %>
+         <span class= "favorite">&hearts;</span>
+        <% end %>
       </p>
       <small>
 
       </small>
     </div>
   <% end %>
-  <a href="<%= new_recipe_path %>"><div style = "background-image: url(http://i.imgur.com/GkEIPFO.jpg)" class="box new_item"><span>+</span></div></a>
+  <% if current_user %>
+    <a href="<%= new_recipe_path %>"><div style = "background-image: url(http://i.imgur.com/GkEIPFO.jpg)" class="box new_item"><span>+</span></div></a>
+  <% end %>
 </div>

@@ -58,11 +58,16 @@ nav > a {
 .header_left {
   height:100%;
   margin: 0;
+}
+.header_left > a {
+  height:100%;
+  margin: 0;
   display: flex;
   align-items: center;
+  color: white;
 }
 .splash {
-  font-family:Arial;
+  /*font-family:Arial;*/
   font-weight:bold;
   font-size: 40px;
 }
@@ -71,9 +76,10 @@ nav > a {
   position: relative;
   top:0;
   left:0;
-  background-color:white;
+  /*background-color:white;*/
   margin-left:10px;
   margin-right:10px;
+  -webkit-filter: invert(100%);
 }
 .login {
   margin-right:10px;
@@ -169,13 +175,6 @@ p.boxy {
 p.boxy > small {
   opacity:0;
   margin:5px;
-}
-p.boxy.hover:hover {
-  height: 26%;
-}
-
-p.boxy.hover:hover > small {
-  opacity:1;
 }
 p.boxy a{
   color: white;

@@ -18,5 +18,7 @@
       </small>
     </div>
   <% end %>
-  <a href="<%= new_food_path %>"><div style = "background-image: url(http://i.imgur.com/GkEIPFO.jpg)" class="box new_item"><span>+</span></div></a>
+  <% if current_user %>
+    <a href="<%= new_food_path %>"><div style = "background-image: url(http://i.imgur.com/GkEIPFO.jpg)" class="box new_item"><span>+</span></div></a>
+  <% end %>
 </div>

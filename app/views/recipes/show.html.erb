@@ -1,4 +1,8 @@
-<h2><%= @recipe.name %> (<%= link_to "Edit", edit_recipe_path %>)</h2>
+<h2><%= @recipe.name %>
+  <% if current_user %>
+   (<%= link_to "Edit", edit_recipe_path %>)
+  <% end %>
+ </h2>
 <div class = "show recipe form">
   <div class="food_item left" style="background-image: url(<%= @recipe.img_url%>)"></div>
   <div class = "middle">

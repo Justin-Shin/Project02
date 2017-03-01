@@ -7,12 +7,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <style>
+    <% if current_user %>
+      p.boxy.hover:hover {
+        height: 26%;
+      }
+      p.boxy.hover:hover > small {
+        opacity:1;
+      }
+    <% end %>
+  </style>
   <body>
     <header>
       <div class = "header_left">
-        <img src="http://i.imgur.com/HRIQ3Sp.png" class= "logo" alt="fridge">
-        <span class="splash">FridgerApp</span>
+        <a href="<%= root_path %>">
+          <img src="http://i.imgur.com/HRIQ3Sp.png" class= "logo" alt="fridge">
+          <span class="splash">FridgerApp</span>
+        </a>
       </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
