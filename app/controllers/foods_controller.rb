@@ -33,6 +33,8 @@ class FoodsController < ApplicationController
     redirect_to root_path
   end
 
+  # these next 2 methods conceptually map onto Create and Destroy for Supply
+  # best practice would be to make a 2-method controller for supply
   def add_supply
     @food = Food.find(params[:id])
     @food.supplies.create(user: current_user)
@@ -46,6 +48,6 @@ class FoodsController < ApplicationController
 
   private
   def food_params
-    params.require(:food).permit(:img_url,:name,:fat,:protein,:carbohydrates,:calories,:vegetarian,:gluten_free,:serving_size,:unit_of_measure)
+    params.require(:food).permit(:img_url, :name, :fat, :protein, :carbohydrates, :calories, :vegetarian, :gluten_free, :serving_size, :unit_of_measure)
   end
 end

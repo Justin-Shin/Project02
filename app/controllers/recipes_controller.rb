@@ -27,6 +27,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
+
     @recipe.ingredients.each do |ingredient|
       ingredient.update(amount: params[:recipe][:amount][ingredient.food.name.to_sym],unit_of_measure:params[:recipe][:unit][ingredient.food.name.to_sym])
     end
@@ -41,22 +42,14 @@ class RecipesController < ApplicationController
     redirect_to recipe_path @recipe
   end
 
+  # this is a very awesome feature. nice and simple implementation
   def possible
-    @recipes = Recipe.all.find_all{
-      |recipe| recipe.foods.all? {
-        |food| current_user.foods.include? food
-      }
-    }
-  end
-  def favorites
-    @recipes = current_user.recipes.find_all{
-      |recipe| recipe.foods.all? {
-        |food| current_user.foods.include? food
-      }
-    }
-    @recipes_no = current_user.recipes.find_all {
-      |recipe| @recipes.exclude? recipe
-    }
+    # edited for style.
+    @recipes = Recipe.all.find_all do |recipe|
+       recipe.foods.all? do |food|
+          current_user.foods.include? food
+      end
+    end
   end
 
   def destroy
@@ -65,6 +58,19 @@ class RecipesController < ApplicationController
     redirect_to root_path
   end
 
+  def favorites
+    @recipes = current_user.recipes.find_all do |recipe|
+       recipe.foods.all? do |food|
+         current_user.foods.include? food
+      end
+    end
+    @recipes_no = current_user.recipes.find_all  do |recipe|
+      @recipes.exclude? recipe
+    end
+    puts @recipes, @recipes_no
+  end
+
+  # Would just add a favorites_controller with just create & destory methods
   def add_favorite
     @recipe = Recipe.find(params[:id])
     @recipe.favorites.create(user: current_user)

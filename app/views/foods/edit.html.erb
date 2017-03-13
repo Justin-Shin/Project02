@@ -1,5 +1,10 @@
 <h2><%= @food.name %> (<%= link_to "Delete", @food, method: :delete, class: "delete" %>)</h2>
 <%= form_for @food do |f| %>
+
+<!-- I'd consider removing these divs and just add styling rules for your form labels -->
+<!-- you can use class: "food form" as an additional argument -->
+<!-- you can also put the form into a partial "_form.html.erb" and use <%# render "form" %> -->
+<!-- Keep your display code simple -->
 <div class="food form">
   <div class = "right">
     <div>

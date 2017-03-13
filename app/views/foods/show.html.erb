@@ -1,39 +1,47 @@
 <h2><%= @food.name %>
   <% if current_user %>
-   (<%= link_to "Edit", edit_food_path(@food) %>)</h2>
+  (<%= link_to "Edit", edit_food_path(@food) %>)</h2>
   <% end %>
-<div class = "food form">
-  <div class="food_item" style="background-image: url(<%= @food.img_url%>)"></div>
-  <div class = "right">
-    <h3>Information (per serving: <%= @food.serving_size %> <%= @food.unit_of_measure %>)</h3>
-    <div>
-      <div>Calories: </div><div><%= @food.calories %></div>
-    </div>
-    <div>
-      <div>Fat: </div><div><%= @food.fat %> grams</div>
-    </div>
-    <div>
-      <div>Carbohydrates: </div><div><%= @food.carbohydrates %> grams</div>
-    </div>
-    <div>
-      <div>Protein: </div><div><%= @food.protein %> grams</div>
-    </div>
-    <div>
-      <div>Vegetarian: </div><div><%= @food.vegetarian ? "Yes" : "No" %></div>
-    </div>
-    <div>
-      <div>Gluten Free: </div><div><%= @food.gluten_free ? "Yes" : "No"%></div>
+  <div class = "food form">
+    <div class="food_item" style="background-image: url(<%= @food.img_url%>)"></div>
+    <div class = "right">
+      <h3>
+        Information (per serving: <%= @food.serving_size %> <%= @food.unit_of_measure %>)
+      </h3>
+      <div>
+        <!-- Use <p></p> instead -->
+        <div>Calories: </div><div><%= @food.calories %></div>
+      </div>
+      <div>
+        <!-- Use <p></p> instead -->
+        <div>Fat: </div><div><%= @food.fat %> grams</div>
+      </div>
+      <div>
+        <!-- Use <p></p> instead -->
+        <div>Carbohydrates: </div><div><%= @food.carbohydrates %> grams</div>
+      </div>
+      <div>
+        <!-- Use <p></p> instead -->
+        <div>Protein: </div><div><%= @food.protein %> grams</div>
+      </div>
+      <div>
+        <!-- Use <p></p> instead -->
+        <div>Vegetarian: </div><div><%= @food.vegetarian ? "Yes" : "No" %></div>
+      </div>
+      <div>
+        <!-- Use <p></p> instead -->
+        <div>Gluten Free: </div><div><%= @food.gluten_free ? "Yes" : "No"%></div>
+      </div>
     </div>
   </div>
-</div>
 
-<h2>Recipes that include this food:</h2>
-<div class="boxes">
-  <% @recipes.each do |recipe| %>
+  <h2>Recipes that include this food:</h2>
+  <div class="boxes">
+    <% @recipes.each do |recipe| %>
     <div class="box" style= "background-image: url(<%= recipe.img_url %>)">
       <p class="boxy">
         <%= link_to recipe.name, recipe_path(recipe) %><% if current_user %> <span class= "favorite">&hearts;</span><% end %>
       </p>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
