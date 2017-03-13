@@ -48,6 +48,7 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all.find_all do |recipe|
        recipe.foods.all? do |food|
           current_user.foods.include? food
+          # I would add checks for quantities here
       end
     end
   end
