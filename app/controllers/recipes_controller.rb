@@ -1,4 +1,12 @@
 class RecipesController < ApplicationController
+  # welcome page for users that are not logged in
+  def welcome
+    if current_user
+      # if someone is logged in, take them to the list of foods
+      redirect_to foods_path
+    end
+  end
+
   def index
     @recipes = Recipe.all
   end
