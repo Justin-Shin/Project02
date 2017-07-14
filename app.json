@@ -1,8 +1,22 @@
 {
   "name": "fridgerapp_ruby",
   "scripts": {
+    "test-setup": "bundle exec rake db:setup",
+    "test": "bundle exec rspec spec"
   },
   "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY": "5"
+  },
+  "environments": {
+    "test": {
+      "env": {
+        "SECRET_TOKEN": "test-secret"
+      }
+    }
   },
   "formation": {
   },
