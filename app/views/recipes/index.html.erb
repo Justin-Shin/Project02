@@ -15,6 +15,7 @@
     </div>
   <% end %>
   <% if current_user %>
+    <!-- empty fridge image makes more sense for adding a Supply --> 
     <a href="<%= new_recipe_path %>"><div style = "background-image: url(http://i.imgur.com/GkEIPFO.jpg)" class="box new_item"><span>+</span></div></a>
   <% end %>
 </div>

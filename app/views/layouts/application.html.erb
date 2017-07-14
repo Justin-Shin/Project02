@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <style>
+  /* I think I understand your rationale for putting this here, but I think that if you had a lot of this type of session-dependent styles in the application layout, it would scale messily. Another approach would be to conditionally apply the style wherever the boxy-class p tags occur. */
     <% if current_user %>
       p.boxy.hover:hover {
         height: 26%;
