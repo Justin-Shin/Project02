@@ -42,7 +42,7 @@
         <a class = "aside_link" href="<%=recipes_path%>"><div class = "aside_link">Recipes</div></a>
         <% if current_user %>
         <a class = "aside_link" href="<%=recipes_possible_path%>"><div class = "aside_link">What can I make?</div></a>
-        <a class = "aside_link" href="<%=recipes_favorites_path%>"><div class = "aside_link">My Recipe Box</div></a>
+        <a class = "aside_link" href="<%=recipes_favorites_path%>"><div class = "aside_link">My Recipe Box!</div></a>
         <div class = "pantry">Your Refrigerator
           <ul>
             <% current_user.foods.each do |food| %>
