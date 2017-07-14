@@ -2,7 +2,7 @@
   "name": "fridgerapp_ruby",
   "scripts": {
     "test-setup": "bundle exec rake db:setup",
-    "test": "bundle exec rspec spec"
+    "test": "bundle exec rake test"
   },
   "env": {
     "SECRET_TOKEN": {
